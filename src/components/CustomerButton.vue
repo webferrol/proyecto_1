@@ -38,14 +38,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    button.my-button,a.my-button{
+    .my-button{
         display: inline-block;
         padding: .6rem .8rem .8rem .8rem;
         border:1px solid skyblue;
         color: darken(skyblue,40);
         font-size: 1rem;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: normal;
         background-color: transparent;
         border-radius: .5rem;
         box-shadow: -1px -1px .1rem  inset black,
@@ -59,5 +59,5 @@ export default {
         &:active{
             box-shadow: -1.6px -1.6px .1rem  inset black;
         }
-    }
+    }   
 </style>
