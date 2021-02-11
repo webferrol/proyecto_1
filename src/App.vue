@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <CustomerButton :callback="goAbout">About</CustomerButton>
+    <CustomerButton href="http://www.webferrol.com" message="Webferrol" :callback="detenerEnlace"/>
     <CustomerButton :callback="goHome">Home</CustomerButton>
     <CustomerButton :callback="saludo">Hola</CustomerButton>
     
@@ -31,6 +31,9 @@ export default {
         },
         saludo(){
           alert(`Hola ${this.info}`)
+        },
+        detenerEnlace(e){
+          e.preventDefault();
         }
     }
   
@@ -49,7 +52,9 @@ export default {
 #nav {
   padding: 30px;
 
-  a {
+  
+}
+a {
     font-weight: bold;
     color: #2c3e50;
 
@@ -57,5 +62,4 @@ export default {
       color: #42b983;
     }
   }
-}
 </style>

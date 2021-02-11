@@ -1,45 +1,50 @@
-<template>
-    <span class="block-button">
-        <button @click="myFunction" class="block-button__customer">
-            <slot>{{parameter.message}}</slot>
-        </button>
-    </span>
+<template> 
+    <component :is="getType" :href="href"  @click="myFunction($event)" class="my-button">
+        <slot>{{message}}</slot>
+    </component>    
 </template>
 
 <script>
 export default {
     props:{
-        parameter: {
-            type: Object,
-            required: false,
-            default: () =>(
-                { 
-                    message: 'pulsar'
-                }
-            )
-        },
-        callback:{
+       message:{
+           type: String,
+           default: 'Pulsar',
+           required: false
+       },
+       href:{
+           type: String,
+           default:null,
+           required: false
+       },
+       callback:{
             type: Function,
-            required: false
+            required: false        
         }
+    },
+    computed:{
+       getType(){
+           return this.href?"a":"button";
+       } 
     },
     methods:{
-        myFunction(){
+        myFunction(e){
+             
              if(this.callback && typeof this.callback==='function') 
-                this.callback();
+                this.callback(e);
         }
-    },
-    // mounted(){
-    //     this.callback(); 
-    // }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-    .block-button__customer{
+    button.my-button,a.my-button{
+        display: inline-block;
         padding: .6rem .8rem .8rem .8rem;
         border:1px solid skyblue;
         color: darken(skyblue,40);
+        font-size: 1rem;
+        text-decoration: none;
         font-weight: bold;
         background-color: transparent;
         border-radius: .5rem;
